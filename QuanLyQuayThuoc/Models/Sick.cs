@@ -12,23 +12,31 @@ namespace QuanLyQuayThuoc.Models
         [Key]
         public int sick_id { get; set; }
 
-        [Required]
+        public int categorySick_id { get; set; }
+
         [StringLength(50)]
         public string sick_name { get; set; }
 
-        [Column(TypeName = "ntext")]
-        public string sick_type { get; set; }
+        [StringLength(500)]
+        public string sick_learngeneral { get; set; }
 
-        [Column(TypeName = "ntext")]
-        public string sick_reason { get; set; }
-
-        [Column(TypeName = "ntext")]
+        [StringLength(500)]
         public string sick_symptom { get; set; }
 
-        [Column(TypeName = "ntext")]
+        [StringLength(500)]
+        public string sick_reason { get; set; }
+
+        [StringLength(500)]
         public string sick_risk { get; set; }
 
-        [Column(TypeName = "ntext")]
+        [StringLength(500)]
         public string sick_treatment { get; set; }
+
+        [StringLength(500)]
+        public string sick_livingmode { get; set; }
+
+        public int? sick_status { get; set; }
+
+        public virtual CategorySick CategorySick { get; set; }
     }
 }

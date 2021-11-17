@@ -22,8 +22,6 @@ namespace QuanLyQuayThuoc.Models
 
         public double impirce { get; set; }
 
-        public virtual Product Product { get; set; }
-
         public virtual StockIn StockIn { get; set; }
     }
 }

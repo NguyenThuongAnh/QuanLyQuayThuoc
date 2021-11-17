@@ -1,0 +1,127 @@
+﻿@model IEnumerable<QuanLyQuayThuoc.Models.Sick>
+
+@{
+    ViewBag.Title = "DetailsSick";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+@foreach (var item in Model)
+{
+    <div class="bg-light py-3">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mb-0">
+                    <a href="@Url.Action("Index", "Home")">Trang chủ</a>
+                    <span class="mx-2 mb-0">/</span>
+                    <a class="text-black" href="@Url.Action("IndexSick", "Sick")">Bệnh</a>
+                    <span class="mx-2 mb-0">/</span>
+                    <a class="text-black" href="@Url.Action("IndexSmallSick", "Sick", new { id = item.categorySick_id })">@item.CategorySick.categorySick_name</a>
+                    <span class="mx-2 mb-0">/</span>
+                    <a class="text-black">@item.sick_name</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    break;
+}
+<div>
+    <div class="container">
+        @foreach (var item in Model)
+        {
+            <div class="posts-wrapper clearfix">
+
+
+                <div class="content-main">
+
+                    <div class="cs-base-custom cs-benh-content">
+
+
+                        @if (item.sick_learngeneral == null)
+                        {
+
+                        }
+                        else
+                        {
+                            <br />
+                            <h2 style="color: #000000">Tìm hiểu chung về @item.sick_name</h2>
+                            <p style="color: #000000">  @item.sick_learngeneral</p>
+                        }
+
+                        @if (item.sick_symptom == null)
+                        {
+
+                        }
+                        else
+                        {
+                            <br />
+                            <h2 style="color: #000000">Triệu chứng thường gặp</h2>
+                            <p style="color: #000000">  @item.sick_symptom</p>
+                        }
+
+                        @if (item.sick_reason == null)
+                        {
+
+                        }
+                        else
+                        {
+                            <br />
+                            <h2 style="color: #000000">Nguyên nhân gây bệnh</h2>
+                            <p style="color: #000000">  @item.sick_reason</p>
+                        }
+
+                        @if (item.sick_risk == null)
+                        {
+
+                        }
+                        else
+                        {
+                            <br />
+                            <h2 style="color: #000000">Nguy cơ mắc phải</h2>
+                            <p style="color: #000000">  @item.sick_risk</p>
+                        }
+
+                        @if (item.sick_treatment == null)
+                        {
+
+                        }
+                        else
+                        {
+                            <br />
+                            <h2 style="color: #000000">Điều trị hiệu quả</h2>
+                            <p style="color: #000000">  @item.sick_treatment</p>
+                        }
+
+                        @if (item.sick_livingmode == null)
+                        {
+
+                        }
+                        else
+                        {
+                            <br />
+                            <h2 style="color: #000000">Chế độ sinh hoạt phù hợp</h2>
+                            <p style="color: #000000">  @item.sick_livingmode</p>
+                        }
+
+                       
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+
+            </div>
+
+        }
+
+    </div>
+</div>
+

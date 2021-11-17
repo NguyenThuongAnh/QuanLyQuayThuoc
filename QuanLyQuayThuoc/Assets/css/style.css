@@ -1,7 +1,7 @@
 /* Base */
 body {
   line-height: 1.7;
-  color: #8c92a0;
+  color: #000;
   font-weight: 300;
   font-size: 16px;
   background: #efefef; }
@@ -203,7 +203,9 @@ a {
   .site-navbar a {
     color: #000; }
     .site-navbar a:hover {
-      color: #000; }
+        background: #f4f5f9;
+        color: #33CC66;
+    }
   .site-navbar .icon {
     font-size: 20px; }
   .site-navbar .site-top-icons ul, .site-navbar .site-top-icons ul li {
@@ -283,7 +285,7 @@ a {
             background: #f4f5f9;
             color: #33CC66;
         }
-    
+        
 
 
 
@@ -780,28 +782,48 @@ a {
   margin-right: 10px; }
 
 .site-blocks-table {
-  overflow: auto; }
-  .site-blocks-table .product-thumbnail {
-    width: 200px; }
-  .site-blocks-table thead th {
-    padding: 30px;
-    text-align: center;
-    border-width: 1px !important;
-    vertical-align: middle;
-    color: #212529;
-    font-size: 18px;
-    font-weight: normal; }
-  .site-blocks-table td {
-    padding: 20px;
-    text-align: center;
-    vertical-align: middle;
-    color: #212529; }
-  .site-blocks-table tbody tr:first-child td {
-    border-top: 1px solid #75b239 !important; }
 
-.site-block-order-table th {
-  border-top: none !important;
-  border-bottom-width: 1px !important; }
+   /* border: 1px solid green;*/
+    overflow: auto;
+}
+    .site-blocks-table:hover {
+        background: #f4f5f9;
+        color: #33CC66;
+    }
+    .site-blocks-table .product-thumbnail {
+        border: 1px solid green;
+        width: 200px;
+    }
+       
+    .site-blocks-table thead th {
+        border: 1px solid green;
+        padding: 30px;
+        text-align: center;
+        border-width: 1px !important;
+        vertical-align: middle;
+        color: #212529;
+        font-size: 18px;
+        font-weight: 800;
+    }
+        
+        .site-blocks-table td {
+            border: 1px solid green;
+            padding: 20px;
+            text-align: center;
+            vertical-align: middle;
+            color: #212529;
+        }
+       
+        .site-blocks-table tbody tr:first-child td {
+            border: 1px solid green;
+            border-top: 1px solid #75b239 !important;
+        }
+        
+
+        .site-block-order-table th {
+            border-top: none !important;
+            border-bottom-width: 1px !important;
+        }
 
 .site-block-order-table td, .site-block-order-table th {
   color: #000; }
@@ -1230,7 +1252,8 @@ a {
   background: rgba(117, 178, 57, 0.1) !important; }
 
 .owl-single .owl-nav {
-  position: absolute;
+/*  position: absolute;*/
+    position:absolute;
   bottom: 0;
   right: 0; }
   .owl-single .owl-nav .owl-prev {
@@ -1279,7 +1302,6 @@ a {
         font-size: 10px;
         padding: 4px 20px;
         text-transform: uppercase;
-     
     }
 
 .step-number > span {
@@ -1309,3 +1331,8 @@ a {
   .btn-outline-white:hover {
     color: #75b239;
     background: #fff; }
+
+
+
+
+/*  ///////////*/

@@ -1,5 +1,4 @@
 ﻿
-
 @{
     ViewBag.Title = "MainLayout";
 }
@@ -44,7 +43,7 @@
             <div class="search-wrap">
                 <div class="container">
                     <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
-                    <form action="@Url.Action("IndexProduct", "Product")" method="post">
+                    <form style="text-align:center; margin-top: 20px" action="@Url.Action("IndexProduct", "Product")" method="post">
                         @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
                         <input type="submit" value="Tìm kiếm" />
                         @*<input type="text" class="form-control" placeholder="Search keyword and hit enter...">*@
@@ -57,35 +56,76 @@
             <div class="container">
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="logo">
+                        
+                    </div>
+
+                    <div>
+                        <div class="main-nav d-none d-lg-block">
+                            <nav class="site-navigation text-right text-md-center" role="navigation">
+                                <ul class="site-menu js-clone-nav d-none d-lg-block">
+                                    
+                                    @if (Session["idUser"] != null)
+                                    {
+                                        <li><a href="#">Trang Quản Trị</a></li>
+                                        <li><a>@Html.ActionLink("Đăng Xuất", "Logout", "Account")</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li> <a>@Html.ActionLink("Đăng Ký", "Register", "Account")</a></li>
+                                        <li> <a>@Html.ActionLink("Đăng Nhập", "Login", "Account")</a></li>
+                                    }
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="container header" id="myHeader" style="margin-left: 30px; border-radius: 0 0 30px 30px">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div class="logo">
                         <div class="site-logo">
                             <a href="@Url.Action("Index", "Home")" class="js-logo-clone"> <strong class="text-primary">Minh</strong>Hoàng</a>
                         </div>
                     </div>
 
+                    <div>
+                        <div class="main-nav d-none d-lg-block">
+                            <nav class="site-navigation text-right text-md-center" role="navigation">
+                                <ul class="site-menu js-clone-nav d-none d-lg-block">
 
-                    <div class="main-nav d-none d-lg-block">
-                        <nav class="site-navigation text-right text-md-center" role="navigation">
-                            <ul class="site-menu js-clone-nav d-none d-lg-block">
-                                <li>@Html.ActionLink("Trang Chủ", "Index", "Home")</li>
-                                <li>@Html.ActionLink("Của Hàng", "IndexProduct", "Product")</li>
-
-
-                                @{ Html.RenderAction("RenderMenu", "Home");}
+                                    <li>@Html.ActionLink("Trang Chủ", "Index", "Home")</li>
+                                    <li>@Html.ActionLink("Của Hàng", "IndexProduct", "Product")</li>
 
 
+                                    @{ Html.RenderAction("RenderMenu", "Home");}
 
-                                <li>@Html.ActionLink("Thông Tin Quầy Thuốc", "About", "Home")</li>
-                                <li>@Html.ActionLink("Liên Lạc", "Contact", "Home")</li>
-                            </ul>
-                        </nav>
+
+                                    <li>@Html.ActionLink("Bệnh", "IndexSick", "Sick")</li>
+                                    <li>@Html.ActionLink("Thông Tin Quầy Thuốc", "About", "Home")</li>
+
+                                    <li>@Html.ActionLink("Liên Lạc", "Contact", "Home")</li>
+                                    <li>@Html.ActionLink("Quản Lý Tủ Thuốc", "IndexMedicalBox", "MedicalBox")</li>
+
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
-
-
+                    <div class="search-wrap">
+                        <div class="container">
+                            <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
+                            <form style="text-align:center; margin-top: 20px" action="@Url.Action("IndexProduct", "Product")" method="post">
+                                @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                                <input type="submit" value="Tìm kiếm" />
+                                @*<input type="text" class="form-control" placeholder="Search keyword and hit enter...">*@
+                            </form>
+                        </div>
+                    </div>
                     <div class="icons">
                         <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
                         <a href="@Url.Action("ViewCart", "Cart")" class="icons-btn d-inline-block bag">
                             <span class="icon-shopping-bag"></span>
-                            <span class="number">2</span>
+                             @Html.Action("BagCart", "Cart")
                         </a>
                         <a href="" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none">
                             <span class="icon-menu"></span>
@@ -99,10 +139,44 @@
 
         @RenderBody()
         @{ Html.RenderAction("RenderFooter", "Home");}
-
     </div>
+      <style>
 
+          /* The sticky class is added to the header with JS when it reaches its scroll position */
+          .sticky {
+              position: fixed;
+              top: 0;
+              width: 100%;
+              z-index: 100;
+              background-color: rgb(255 255 255)
+              
+             
+          }
 
+              /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+              .sticky + .content {
+                  padding-top: 102px;
+              }
+      </style>
+    <script>
+        // When the user scrolls the page, execute myFunction
+        window.onscroll = function () { myFunction() };
+
+        // Get the header
+        var header = document.getElementById("myHeader");
+
+        // Get the offset position of the navbar
+        var sticky = header.offsetTop;
+
+        // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+        function myFunction() {
+            if (window.pageYOffset > sticky) {
+                header.classList.add("sticky");
+            } else {
+                header.classList.remove("sticky");
+            }
+        }
+    </script>
     <script src="~/Assets/js/jquery-3.3.1.min.js"></script>
     <script src="~/Assets/js/jquery-ui.js"></script>
     <script src="~/Assets/js/popper.min.js"></script>

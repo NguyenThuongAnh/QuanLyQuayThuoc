@@ -16,14 +16,20 @@ namespace QuanLyQuayThuoc.Models
         public virtual DbSet<BillDetail> BillDetails { get; set; }
         public virtual DbSet<Brand> Brands { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<CategorySick> CategorySicks { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Distributor> Distributors { get; set; }
         public virtual DbSet<Guest> Guests { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Origin> Origins { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Sick> Sicks { get; set; }
         public virtual DbSet<SmallCategory> SmallCategories { get; set; }
         public virtual DbSet<StockIn> StockIns { get; set; }
         public virtual DbSet<StockinDetail> StockinDetails { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -42,6 +48,20 @@ namespace QuanLyQuayThuoc.Models
                 .WithRequired(e => e.Category)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<CategorySick>()
+                .HasMany(e => e.Sicks)
+                .WithRequired(e => e.CategorySick)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Customer>()
+                .Property(e => e.cus_Phone)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Customer>()
+                .Property(e => e.cus_Name)
+                .IsFixedLength();
+
             modelBuilder.Entity<Distributor>()
                 .HasMany(e => e.StockIns)
                 .WithRequired(e => e.Distributor)
@@ -59,16 +79,6 @@ namespace QuanLyQuayThuoc.Models
             modelBuilder.Entity<Product>()
                 .Property(e => e.prescription_drugs)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<Product>()
-                .HasMany(e => e.BillDetails)
-                .WithRequired(e => e.Product)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Product>()
-                .HasMany(e => e.StockinDetails)
-                .WithRequired(e => e.Product)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<SmallCategory>()
                 .HasMany(e => e.Products)

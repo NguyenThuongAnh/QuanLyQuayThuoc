@@ -1,4 +1,5 @@
-﻿using QuanLyQuayThuoc.Models;
+﻿using PagedList;
+using QuanLyQuayThuoc.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,15 +12,59 @@ namespace QuanLyQuayThuoc.Controllers
     {
         // GET: Category
         QuayThuocModelContext db = new QuayThuocModelContext();
-        public ActionResult ViewCategory(int id)
+        public ActionResult ViewCategory(int id, string SearchString, string currentFilter, int? page)
         {
-            var listProduct = db.Products.Where(n => n.SmallCategory.category_id == id).ToList();
-            return View(listProduct);
+            var listProduct = new List<Product>();
+            if (SearchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                SearchString = currentFilter;
+            }
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                listProduct = db.Products.Where(n => n.product_name.Contains(SearchString)).ToList();
+            }
+            else
+            {
+                listProduct = db.Products.ToList();
+            }
+            ViewBag.CurrentFilter = SearchString;
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            listProduct = listProduct.Where(n => n.SmallCategory.category_id == id).ToList();
+            return View(listProduct.ToPagedList(pageNumber, pageSize));
+            //var listProduct = db.Products.Where(n => n.SmallCategory.category_id == id).ToList();
+            //return View(listProduct);
         }
-        public ActionResult ViewSmallCategory(int id)
+        public ActionResult ViewSmallCategory(int id, string SearchString, string currentFilter, int? page)
         {
-            var listProduct1 = db.Products.Where(n => n.smallcategory_id == id).ToList();
-            return View(listProduct1);
+            var listProduct = new List<Product>();
+            if (SearchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                SearchString = currentFilter;
+            }
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                listProduct = db.Products.Where(n => n.product_name.Contains(SearchString)).ToList();
+            }
+            else
+            {
+                listProduct = db.Products.ToList();
+            }
+            ViewBag.CurrentFilter = SearchString;
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            listProduct = listProduct.Where(n => n.smallcategory_id == id).ToList();
+            return View(listProduct.ToPagedList(pageNumber, pageSize));
+            //var listProduct1 = db.Products.Where(n => n.smallcategory_id == id).ToList();
+            //return View(listProduct1);
         }
     }
 }

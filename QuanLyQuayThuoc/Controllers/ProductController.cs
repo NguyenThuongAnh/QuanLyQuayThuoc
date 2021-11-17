@@ -34,7 +34,7 @@ namespace QuanLyQuayThuoc.Controllers
             ViewBag.CurrentFilter = SearchString;
             int pageSize = 6;
             int pageNumber = (page ?? 1);
-            listProduct = listProduct.OrderByDescending(n => n.product_id).ToList();
+            listProduct = listProduct.Where(n => n.product_status == 1).ToList();
             return View(listProduct.ToPagedList(pageNumber, pageSize));
             //var KetQua = (from item in db.Products
             //              select item).ToList();

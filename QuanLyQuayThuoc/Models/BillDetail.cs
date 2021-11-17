@@ -23,7 +23,5 @@ namespace QuanLyQuayThuoc.Models
         public double? price { get; set; }
 
         public virtual Bill Bill { get; set; }
-
-        public virtual Product Product { get; set; }
     }
 }

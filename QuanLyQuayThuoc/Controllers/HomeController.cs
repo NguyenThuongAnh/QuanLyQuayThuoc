@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -28,6 +30,9 @@ namespace QuanLyQuayThuoc.Controllers
 
             return View();
         }
+        
+
+
         [ChildActionOnly]
         public ActionResult RenderMenu()
         {
@@ -38,6 +43,7 @@ namespace QuanLyQuayThuoc.Controllers
             ViewBag.smallcategory = dssmallcategory;
             return PartialView("_MenuCategory");
         }
+       
         public ActionResult RenderFooter()
         {
             var dscategory = db.Categories.ToList();

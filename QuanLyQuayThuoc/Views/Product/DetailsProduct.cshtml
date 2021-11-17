@@ -33,7 +33,7 @@
                         <h2 class="text-black">@item.product_name</h2>
                         <strong class="text-black">
 
-                            <Big class="text-black">Thành Phần:</Big><a href="@Url.Action("ProductCategory", "Category", new { @id = item.smallcategory_id }, null)"> @item.SmallCategory.smallcategory_name</a>
+                            <Big class="text-black">Thành Phần:</Big><a href="@Url.Action("ViewSmallCategory", "Category", new { @id = item.smallcategory_id }, null)"> @item.SmallCategory.smallcategory_name</a>
 
                             @if (item.product_packing == null)
                             {
@@ -122,7 +122,7 @@
                             </div>
                         </div>
 
-                        <p><a href="cart.html" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Thêm Vào Giỏ</a></p>
+                        <p><a href="/Cart/AddItem/@item.product_id" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Thêm Vào Giỏ</a></p>
                         <p><a href="@Url.Action("ViewContact", "Contact")" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Liên Hệ Quầy Thuốc</a></p>
 
                         <div class="mt-5">

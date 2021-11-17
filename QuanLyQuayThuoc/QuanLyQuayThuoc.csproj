@@ -134,19 +134,28 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MedicalBoxController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\SickController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Bill.cs" />
     <Compile Include="Models\BillDetail.cs" />
     <Compile Include="Models\Brand.cs" />
+    <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\CategorySick.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Distributor.cs" />
     <Compile Include="Models\Guest.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Origin.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\QuayThuocModelContext.cs" />
@@ -154,6 +163,8 @@
     <Compile Include="Models\SmallCategory.cs" />
     <Compile Include="Models\StockIn.cs" />
     <Compile Include="Models\StockinDetail.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -196,6 +207,7 @@
     <Content Include="Assets\images\product_05.png" />
     <Content Include="Assets\images\product_06.png" />
     <Content Include="Assets\images\product_07_large.png" />
+    <Content Include="Assets\images\quaythuoc1.png" />
     <Content Include="Assets\images\shoe.png" />
     <Content Include="Assets\images\the.png" />
     <Content Include="Assets\images\vutru.jpg" />
@@ -360,6 +372,36 @@
     <Content Include="Views\Category\ViewCategory.cshtml" />
     <Content Include="Views\Category\ViewSmallCategory.cshtml" />
     <Content Include="Views\Cart\ViewCart.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\MedicalBox\IndexMedicalBox.cshtml" />
+    <Content Include="Views\MedicalBox\drawer1.cshtml" />
+    <Content Include="Views\MedicalBox\drawer2.cshtml" />
+    <Content Include="Views\MedicalBox\drawer3.cshtml" />
+    <Content Include="Views\MedicalBox\drawer4.cshtml" />
+    <Content Include="Views\MedicalBox\drawer5.cshtml" />
+    <Content Include="Views\MedicalBox\drawer6.cshtml" />
+    <Content Include="Views\MedicalBox\drawer7.cshtml" />
+    <Content Include="Views\MedicalBox\drawer8.cshtml" />
+    <Content Include="Views\MedicalBox\drawer9.cshtml" />
+    <Content Include="Views\MedicalBox\drawer10.cshtml" />
+    <Content Include="Views\MedicalBox\drawer11.cshtml" />
+    <Content Include="Views\MedicalBox\drawer12.cshtml" />
+    <Content Include="Views\MedicalBox\drawer13.cshtml" />
+    <Content Include="Views\MedicalBox\drawer14.cshtml" />
+    <Content Include="Views\MedicalBox\drawer15.cshtml" />
+    <Content Include="Views\MedicalBox\drawer16.cshtml" />
+    <Content Include="Views\MedicalBox\drawer17.cshtml" />
+    <Content Include="Views\MedicalBox\drawer18.cshtml" />
+    <Content Include="Views\MedicalBox\drawer19.cshtml" />
+    <Content Include="Views\MedicalBox\drawer20.cshtml" />
+    <Content Include="Views\Cart\BagCart.cshtml" />
+    <Content Include="Views\Cart\IndexCheckout.cshtml" />
+    <Content Include="Views\Cart\Shoping_Success.cshtml" />
+    <Content Include="Views\Customer\Create.cshtml" />
+    <Content Include="Views\Sick\IndexSmallSick.cshtml" />
+    <Content Include="Views\Sick\IndexSick.cshtml" />
+    <Content Include="Views\Sick\DetailsSick.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
