@@ -34,12 +34,12 @@
         <div class="site-navbar py-2">
 
             @*@using (Html.BeginForm("IndexProduct", "Product", FormMethod.Get))
-            {
-                <p>
-                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-                    <input type="submit" value="Tìm kiếm" />
-                </p>
-            }*@
+                {
+                    <p>
+                        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+                        <input type="submit" value="Tìm kiếm" />
+                    </p>
+                }*@
             <div class="search-wrap">
                 <div class="container">
                     <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
@@ -56,14 +56,16 @@
             <div class="container">
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="logo">
-                        
+                        <div class="site-logo">
+                            <a href="@Url.Action("Index", "Home")" class="js-logo-clone"> <strong class="text-primary">Minh</strong>Hoàng</a>
+                        </div>
                     </div>
 
                     <div>
                         <div class="main-nav d-none d-lg-block">
                             <nav class="site-navigation text-right text-md-center" role="navigation">
                                 <ul class="site-menu js-clone-nav d-none d-lg-block">
-                                    
+
                                     @if (Session["idUser"] != null)
                                     {
                                         <li><a href="#">Trang Quản Trị</a></li>
@@ -78,15 +80,13 @@
                             </nav>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
             <div class="container header" id="myHeader" style="margin-left: 30px; border-radius: 0 0 30px 30px">
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="logo">
-                        <div class="site-logo">
-                            <a href="@Url.Action("Index", "Home")" class="js-logo-clone"> <strong class="text-primary">Minh</strong>Hoàng</a>
-                        </div>
+                     
                     </div>
 
                     <div>
@@ -95,7 +95,7 @@
                                 <ul class="site-menu js-clone-nav d-none d-lg-block">
 
                                     <li>@Html.ActionLink("Trang Chủ", "Index", "Home")</li>
-                                    <li>@Html.ActionLink("Của Hàng", "IndexProduct", "Product")</li>
+                                    <li>@Html.ActionLink("Cửa Hàng", "IndexProduct", "Product")</li>
 
 
                                     @{ Html.RenderAction("RenderMenu", "Home");}
@@ -104,8 +104,17 @@
                                     <li>@Html.ActionLink("Bệnh", "IndexSick", "Sick")</li>
                                     <li>@Html.ActionLink("Thông Tin Quầy Thuốc", "About", "Home")</li>
 
-                                    <li>@Html.ActionLink("Liên Lạc", "Contact", "Home")</li>
-                                    <li>@Html.ActionLink("Quản Lý Tủ Thuốc", "IndexMedicalBox", "MedicalBox")</li>
+                                    <li>@Html.ActionLink("Liên Lạc", "IndexContact", "Contact")</li>
+
+                                    @if (Session["idUser"] != null)
+                                    {
+                                        <li>@Html.ActionLink("Quản Lý Tủ Thuốc", "IndexMedicalBox", "MedicalBox")</li>
+                                    }
+                                    else
+                                    {
+                                        
+                                    }
+
 
                                 </ul>
                             </nav>
@@ -125,7 +134,7 @@
                         <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
                         <a href="@Url.Action("ViewCart", "Cart")" class="icons-btn d-inline-block bag">
                             <span class="icon-shopping-bag"></span>
-                             @Html.Action("BagCart", "Cart")
+                            @Html.Action("BagCart", "Cart")
                         </a>
                         <a href="" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none">
                             <span class="icon-menu"></span>
@@ -139,25 +148,27 @@
 
         @RenderBody()
         @{ Html.RenderAction("RenderFooter", "Home");}
+
     </div>
-      <style>
 
-          /* The sticky class is added to the header with JS when it reaches its scroll position */
-          .sticky {
-              position: fixed;
-              top: 0;
-              width: 100%;
-              z-index: 100;
-              background-color: rgb(255 255 255)
-              
-             
-          }
 
-              /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
-              .sticky + .content {
-                  padding-top: 102px;
-              }
-      </style>
+
+    <style>
+
+        /* The sticky class is added to the header with JS when it reaches its scroll position */
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background-color: rgb(255 255 255)
+        }
+
+            /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+            .sticky + .content {
+                padding-top: 102px;
+            }
+    </style>
     <script>
         // When the user scrolls the page, execute myFunction
         window.onscroll = function () { myFunction() };
@@ -177,6 +188,7 @@
             }
         }
     </script>
+
     <script src="~/Assets/js/jquery-3.3.1.min.js"></script>
     <script src="~/Assets/js/jquery-ui.js"></script>
     <script src="~/Assets/js/popper.min.js"></script>
@@ -185,6 +197,7 @@
     <script src="~/Assets/js/jquery.magnific-popup.min.js"></script>
     <script src="~/Assets/js/aos.js"></script>
     <script src="~/Assets/js/main.js"></script>
+    @RenderSection("footer", required: false)
 </body>
 
 </html>

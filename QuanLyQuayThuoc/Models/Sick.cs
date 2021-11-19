@@ -35,8 +35,6 @@ namespace QuanLyQuayThuoc.Models
         [StringLength(500)]
         public string sick_livingmode { get; set; }
 
-        public int? sick_status { get; set; }
-
         public virtual CategorySick CategorySick { get; set; }
     }
 }

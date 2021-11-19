@@ -20,13 +20,15 @@ namespace QuanLyQuayThuoc.Models
 
         public double? bill_total { get; set; }
 
-        public int? guest_phone { get; set; }
+        [StringLength(11)]
+        public string cus_Phone { get; set; }
 
-        [Column(TypeName = "date")]
         public DateTime? bill_date { get; set; }
 
         [StringLength(50)]
-        public string guest_name { get; set; }
+        public string seller { get; set; }
+
+        public virtual Customer Customer { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BillDetail> BillDetails { get; set; }

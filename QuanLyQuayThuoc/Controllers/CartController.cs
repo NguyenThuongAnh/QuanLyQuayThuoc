@@ -82,20 +82,20 @@ namespace QuanLyQuayThuoc.Controllers
             try
             {
                 Cart cart = Session["Cart"] as Cart;
-                Order _order = new Order();
-                _order.orderDate = DateTime.Now;
-                _order.codeCus = int.Parse(form["CodeCustomer"]);
-                _order.seller = form["seller_Name"];
-                db.Orders.Add(_order);
+                Bill _bill = new Bill();
+                _bill.bill_date = DateTime.Now;
+                _bill.cus_Phone = form["cus_Phone"];
+                _bill.seller = form["seller_Name"];
+                db.Bills.Add(_bill);
                 foreach(var item in cart.Items)
                 {
-                    OrderDetail _order_Detail = new OrderDetail();
-                    _order_Detail.order_id = _order.order_id;
-                    _order_Detail.product_id = item.productCart.product_id;
-                    _order_Detail.unitPriceSale = item.productCart.product_saleprice;
-                    _order_Detail.quantitySale = item.quantityCart;
+                    BillDetail _bill_Detail = new BillDetail();
+                    _bill_Detail.billdetail_id = _bill.bill_id;
+                    _bill_Detail.product_id = item.productCart.product_id;
+                    _bill_Detail.unitPriceSale = item.productCart.product_saleprice;
+                    _bill_Detail.quantitySale = item.quantityCart;
                     
-                    db.OrderDetails.Add(_order_Detail);
+                    db.BillDetails.Add(_bill_Detail);
                 }
                 db.SaveChanges();
                 cart.ClearCart();

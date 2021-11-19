@@ -51,6 +51,9 @@ namespace QuanLyQuayThuoc.Controllers
 
             var dssmallcategory = db.SmallCategories.ToList();
             ViewBag.smallcategory = dssmallcategory;
+
+            var dscontact = db.Contacts.ToList();
+            ViewBag.contact = dscontact;
             return PartialView("_Footer");
         }
         public ActionResult HotproductTPCN()

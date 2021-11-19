@@ -38,7 +38,7 @@
         <div class="site-section">
             <div class="container">
                 <div class="row mb-5">
-                    <form class="col-md-12" method="post">
+                    <div class="col-md-12">
                         <div class="site-blocks-table">
                             <table class="table table-bordered">
 
@@ -61,6 +61,9 @@
                                     @foreach (var item in Model.Items)
                                     {
                                         double total = Convert.ToDouble(item.productCart.product_saleprice.Value * item.quantityCart);
+                            
+
+
 
                                         <tr>
                                             <td class="product-thumbnail">
@@ -73,7 +76,8 @@
 
                                             <td>
                                                 @using (Html.BeginForm("Update_quatity_cart", "Cart"))
-                                                {
+                    {
+                                             
                                                     <input type="hidden" value="@item.productCart.product_id" name="ID_Product" />
                                                     <div class="input-group mb-3" style="max-width: 150px;">
                                                         <div class="input-group-prepend">
@@ -87,20 +91,23 @@
                                                     </div>
                                                     @*<input type="number" value="@item.quantityCart" name="Quantity" />*@
                                                     <input style="text-align: center" type="submit" value="Cập Nhật" />
+                                                
                                                 }
+
+
+
                                             </td>
 
                                             <td>@total</td>
                                             <td><a href="/Cart/RemoveCart/@item.productCart.product_id" class="btn btn-primary height-auto btn-sm">Xóa</a></td>
                                         </tr>
 
-
-                                    }
-                                </tbody>
+                                        }
+                                    </tbody>
 
                             </table>
                         </div>
-                    </form>
+                    </div>
                 </div>
 
                 @if (Session["idUser"] != null)
@@ -112,9 +119,9 @@
                                 <td colspan="5">
                                     <table style="border-collapse: separate; border-spacing: 5px;">
                                         <tr>
-                                            <td>Mã khách hàng</td>
+                                            <td>Số điện thoại</td>
                                             <td>
-                                                <input type="number" name="CodeCustomer" required />
+                                                <input type="text" name="cus_Phone" required />
                                             </td>
                                             <td></td>
                                         </tr>

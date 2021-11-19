@@ -39,10 +39,12 @@ namespace QuanLyQuayThuoc.Models
         public void Update_quantityCart(string id, int _qua)
         {
             var item = items.Find(s => s.productCart.product_id == id);
-            if (item != null)
-            {
-                item.quantityCart = _qua;
-            }
+         
+                if (item != null)
+                {
+                    item.quantityCart = _qua;
+                }
+   
         }
 
         public double Total_Money()

@@ -22,17 +22,21 @@
                     </ul>
                 }
             </div>
-
-            <div class="col-md-6 col-lg-3">
-                <div class="block-5 mb-5">
-                    <h3 class="footer-heading mb-4">Thông Tin Liên Hệ</h3>
-                    <ul class="list-unstyled">
-                        <li class="address">Nha Trang</li>
-                        <li class="phone"><a href="tel://23923929210">Không Nhớ</a></li>
-                        <li class="email">HoangBeDe@gmail.com</li>
-                    </ul>
+            @foreach (var item in ViewBag.contact)
+            {
+                <div class="col-md-6 col-lg-3">
+                    <div class="block-5 mb-5">
+                      
+                        <h3 class="footer-heading mb-4">Thông Tin Liên Hệ</h3>
+                        <ul class="list-unstyled">
+                            <li class="address">Nha Trang</li>
+                            <li class="phone"><a href="tel://23923929210">Không Nhớ</a></li>
+                            <li class="email">HoangBeDe@gmail.com</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            }
+
         </div>
 
     </div>

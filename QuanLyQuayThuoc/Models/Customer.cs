@@ -12,23 +12,22 @@ namespace QuanLyQuayThuoc.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Customer()
         {
-            Orders = new HashSet<Order>();
+            Bills = new HashSet<Bill>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int cus_id { get; set; }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int codeCus { get; set; }
-
         [StringLength(11)]
+        [Required]
         public string cus_Phone { get; set; }
 
         [StringLength(10)]
+        [Required]
         public string cus_Name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Order> Orders { get; set; }
+        public virtual ICollection<Bill> Bills { get; set; }
     }
 }

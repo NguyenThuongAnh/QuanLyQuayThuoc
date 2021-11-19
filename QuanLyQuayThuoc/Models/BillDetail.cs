@@ -18,10 +18,12 @@ namespace QuanLyQuayThuoc.Models
         [StringLength(15)]
         public string product_id { get; set; }
 
-        public int? quantity { get; set; }
+        public double? unitPriceSale { get; set; }
 
-        public double? price { get; set; }
+        public int? quantitySale { get; set; }
 
         public virtual Bill Bill { get; set; }
+
+        public virtual Product Product { get; set; }
     }
 }

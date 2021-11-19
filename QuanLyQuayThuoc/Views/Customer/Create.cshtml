@@ -20,17 +20,11 @@
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @Html.HiddenFor(model => model.cus_id)
 
-            <div class="form-group">
-                <strong style="margin-left:30px">Nhập mã khách hàng</strong>
-                <div class="col-md-10" style="border-radius: 10px 10px 10px 10px; border: 1px solid black; margin-left: 30px">
-                    @Html.EditorFor(model => model.codeCus, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.codeCus, "", new { @class = "text-danger" })
-                </div>
-            </div>
+            
 
             <div class="form-group">
                 <strong style="margin-left:30px">Nhập số điện thoại</strong>
-                <div class="col-md-10" style="border-radius: 10px 10px 10px 10px; border: 1px solid black; margin-left: 30px">
+                <div class="col-md-10" style="border-radius: 10px 10px 10px 10px; border: 1px solid black; margin-left: 30px" required>
                     @Html.EditorFor(model => model.cus_Phone, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.cus_Phone, "", new { @class = "text-danger" })
                 </div>
@@ -38,9 +32,9 @@
 
             <div class="form-group">
                 <strong style="margin-left:30px">Nhập tên khách hàng</strong>
-                <div class="col-md-10" style="border-radius: 10px 10px 10px 10px; border: 1px solid black; margin-left: 30px">
+                <div class="col-md-10" style="border-radius: 10px 10px 10px 10px; border: 1px solid black; margin-left: 30px" required>
                     @Html.EditorFor(model => model.cus_Name, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.cus_Name, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.cus_Name, "", new { @class = "text-danger" } )
                 </div>
             </div>
 

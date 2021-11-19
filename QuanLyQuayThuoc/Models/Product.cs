@@ -5,7 +5,6 @@ namespace QuanLyQuayThuoc.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
-    using System.Linq;
 
     [Table("Product")]
     public partial class Product
@@ -13,7 +12,7 @@ namespace QuanLyQuayThuoc.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            OrderDetails = new HashSet<OrderDetail>();
+            BillDetails = new HashSet<BillDetail>();
         }
 
         [Key]
@@ -72,16 +71,13 @@ namespace QuanLyQuayThuoc.Models
 
         public int? product_cart_sale { get; set; }
 
-        public virtual Brand Brand { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual ICollection<BillDetail> BillDetails { get; set; }
+
+        public virtual Brand Brand { get; set; }
 
         public virtual Origin Origin { get; set; }
 
         public virtual SmallCategory SmallCategory { get; set; }
-
-
-        
     }
 }

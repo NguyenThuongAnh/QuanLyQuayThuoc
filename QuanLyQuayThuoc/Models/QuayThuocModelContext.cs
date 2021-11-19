@@ -19,6 +19,7 @@ namespace QuanLyQuayThuoc.Models
         public virtual DbSet<CategorySick> CategorySicks { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Distributor> Distributors { get; set; }
+        public virtual DbSet<Feedback> Feedbacks { get; set; }
         public virtual DbSet<Guest> Guests { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
@@ -30,9 +31,15 @@ namespace QuanLyQuayThuoc.Models
         public virtual DbSet<StockinDetail> StockinDetails { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Bill>()
+                .Property(e => e.cus_Phone)
+                .IsFixedLength()
+                .IsUnicode(false);
+
             modelBuilder.Entity<Bill>()
                 .HasMany(e => e.BillDetails)
                 .WithRequired(e => e.Bill)
@@ -67,6 +74,15 @@ namespace QuanLyQuayThuoc.Models
                 .WithRequired(e => e.Distributor)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<Feedback>()
+                .Property(e => e.fb_phone)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Feedback>()
+                .Property(e => e.fb_message)
+                .IsFixedLength();
+
             modelBuilder.Entity<Origin>()
                 .HasMany(e => e.Products)
                 .WithRequired(e => e.Origin)
@@ -79,6 +95,11 @@ namespace QuanLyQuayThuoc.Models
             modelBuilder.Entity<Product>()
                 .Property(e => e.prescription_drugs)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(e => e.BillDetails)
+                .WithRequired(e => e.Product)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<SmallCategory>()
                 .HasMany(e => e.Products)

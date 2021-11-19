@@ -11,12 +11,15 @@ namespace QuanLyQuayThuoc.Models
         [Key]
         public int user_id { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string user_name { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string user_password { get; set; }
 
+        [Required]
         [StringLength(50)]
         public string user_email { get; set; }
     }
